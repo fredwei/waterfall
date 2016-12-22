@@ -67,3 +67,8 @@ body,img{
 	color: #333;
 	text-decoration: none;
 }
+
+.waterfall_item{
+	border-radius: 3px;
+	overflow: hidden;
+}
