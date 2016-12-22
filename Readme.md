@@ -60,7 +60,7 @@ waterfall.init({
 
 ###配置项
 
-<table style="width: 100%; text-align: center;" border="1" borderColor="#ccc" cellspacing="0">
+<table>
     <thead>
     	<tr>
     		<th>参数名</th>
