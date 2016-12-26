@@ -25,6 +25,8 @@
 		between: '1%',
 		// 是否响应容器变化
 		isResize: true,
+		// 渲染后的opacity值
+		opacity: 1,
 		// 渲染完成后回调
 		initcallback: function($box){}
 	};
@@ -169,7 +171,7 @@
 				'left': _itemLeftArr[_itemPosition.col],
 				'width': _itemWidth,
 				'height': _tempHeight,
-				'opacity': 1
+				'opacity': _defaults.opacity
 			});
 
 			// 更新每列高度数组
