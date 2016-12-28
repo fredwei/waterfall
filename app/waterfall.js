@@ -111,6 +111,15 @@
 		return b;
 	}
 
+	// 数据格式化，四舍五入取整
+	function getRound(obj){
+		for (var i in obj) {
+			obj[i] = Math.round(obj[i]);
+		}
+
+		return obj;
+	}
+
 	// 计算位置
 	function _countPosition(){
 		var i = 0,
@@ -153,7 +162,8 @@
 
 		// 设置每一项的css
 		var $tempItem,
-			_tempHeight = 0;
+			_tempHeight = 0,
+			_tempRoundValue;
 
 		for (i = 0; i < _defaults.itemLen; i++) {
 			// 临时值
@@ -165,14 +175,17 @@
 			// 通过图片集合中图片原尺寸计算出高度
 			_tempHeight = _itemWidth*_defaults.imgArr[i].h/_defaults.imgArr[i].w;
 
-			// 设置子项的样式
-			$tempItem.css({
+			// 数值四舍五入取整
+			_tempRoundValue = getRound({
 				'top': _itemTopArr[_itemPosition.row],
 				'left': _itemLeftArr[_itemPosition.col],
 				'width': _itemWidth,
 				'height': _tempHeight,
 				'opacity': _defaults.opacity
 			});
+
+			// 设置子项的样式
+			$tempItem.css(_tempRoundValue);
 
 			// 更新每列高度数组
 			_itemTopArr[_itemPosition.row] += (_tempHeight + _defaults.betweenVal);
