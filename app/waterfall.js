@@ -27,6 +27,8 @@
 		isResize: true,
 		// 渲染后的opacity值
 		opacity: 1,
+		// 是否支持lazy插件
+		lazy: true,
 		// 渲染完成后回调
 		initcallback: function($box){}
 	};
@@ -203,10 +205,13 @@
 	// 监听图片加载
 	_waterfall.imgload = function(box, callback){
 		var $box = $(box),
-			_arr = [];
+			_arr = [],
+			_src = '';
 
 		$box.find(_defaults.itemimg).each(function(){
-			_arr.push($(this).attr('src'));
+			_src = _defaults.lazy ? ($(this).attr('data-original') || $(this).attr('src')) : $(this).attr('src');
+
+			_arr.push(_src);
 		});
 
 		_imgload(_arr, callback);
